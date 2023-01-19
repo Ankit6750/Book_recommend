@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book-Recommendation</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    .text-white{color: blueviolet}
+</style>
+<body  style="background-color: LightCyan;">
+    <nav class="navbar navbar-light" style="background-color: Aquamarine;">
+        <a class="navbar-brand">Book Recommendation</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-white" style="font-size:60px">Recommendation</h1>
+                <form action="/recommend_books" method="post">
+                  <input name="user_input" type="text" class="form-control"><br>
+                  <input type="Submit" class="btn btn-lg btn-warning">
+                </form>
+            </div>
+
+            {% if data %}
+             {% for i in data %}
+                <div class="col-md-3" style="margin-top:70px">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{i[2]}}">
+                            <p class="text-white">{{i[0]}}</p>
+                            <h4  class="text-white">"{{i[1]}}"</h4>
+                        </div>
+                    </div>
+                </div>
+             {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
